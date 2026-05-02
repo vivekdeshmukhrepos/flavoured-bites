@@ -1,0 +1,978 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flavoured Bites – Street Food, Homely Heart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;900&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════ PRELOADER ═══════════════ -->
+<div id="preloader">
+  <span class="loader-emoji">🌶️</span>
+  <div class="loader-brand">Flavoured Bites</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <p style="color:#6a94ae;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;">Preparing something delicious…</p>
+</div>
+
+<!-- ═══════════════ ORDER MODAL ═══════════════ -->
+<div id="order-modal">
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-emoji" id="modal-emoji">🤤</div>
+    <div class="modal-title">Customise Your Order</div>
+    <div class="modal-dish" id="modal-dish-name">Signature Pani Puri</div>
+    <div class="modal-text">Pick your spice level and quantity. We'll make it just the way you like it.</div>
+    <div class="modal-qty">
+      <button class="qty-btn" id="qty-minus">−</button>
+      <span id="modal-qty-val">1</span>
+      <button class="qty-btn" id="qty-plus">+</button>
+    </div>
+    <div class="spice-label">Spice Level</div>
+    <div class="spice-row">
+      <button class="spice-btn" data-spice="Mild 😊">Mild 😊</button>
+      <button class="spice-btn picked" data-spice="Medium 🌶️">Medium 🌶️</button>
+      <button class="spice-btn" data-spice="Hot 🔥">Hot 🔥</button>
+      <button class="spice-btn" data-spice="Extra Fire 💀">Extra Fire 💀</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="modal-confirm">Confirm Order 🎉</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="Logo 1.jpg" alt="Flavoured Bites Logo" onerror="this.style.display='none'" />
+      <!-- <div class="nav-logo-text">
+        Flavoured Bites
+        <span>Street Food ✦ Soul Food</span>
+      </div> -->
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <!-- <li><a href="#specials">Deals 🔥</a></li> -->
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#find-us">Find Us</a></li>
+    </ul>
+    <!-- <a href="#menu" class="nav-order-btn">Order Now →</a> -->
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#about"     class="mob-link">Our Story</a>
+  <a href="#menu"      class="mob-link">Menu</a>
+  <!-- <a href="#specials"  class="mob-link">Deals 🔥</a> -->
+  <a href="#gallery"   class="mob-link">Gallery</a>
+  <a href="#find-us"   class="mob-link">Find Us</a>
+  <!-- <a href="#menu" class="btn btn-primary">Order Now →</a> -->
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-circle hc1"></div>
+  <div class="hero-circle hc2"></div>
+  <div class="hero-circle hc3"></div>
+
+  <!-- Floating food circles -->
+  <div class="food-float ff1">
+    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=300&q=85&auto=format&fit=crop" alt="Pani Puri" />
+  </div>
+  <div class="food-float ff2">
+    <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=300&q=85&auto=format&fit=crop" alt="Chaat" />
+  </div>
+  <div class="food-float ff3">
+    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=200&q=80&auto=format&fit=crop" alt="Bhel Puri" />
+  </div>
+  <div class="food-float ff4">
+    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200&q=80&auto=format&fit=crop" alt="Street Food" />
+  </div>
+  <div class="food-float ff5">
+    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200&q=80&auto=format&fit=crop" alt="Snacks" />
+  </div>
+
+  <!-- Emoji floaters -->
+  <span class="emoji-float ef1">🌶️</span>
+  <span class="emoji-float ef2">🍋</span>
+  <span class="emoji-float ef3">✨</span>
+  <span class="emoji-float ef4">🫙</span>
+  <span class="emoji-float ef5">🌿</span>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="dot"></span> Now Serving Fresh Daily</div>
+    <h1 class="hero-brand">Flavoured Bites</h1>
+    <div class="hero-tagline-wrap">
+      <p id="hero-tagline"></p>
+    </div>
+    <div class="hero-tagline-bar"></div>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn btn-primary">Explore Menu 🍽️</a>
+      <a href="#about" class="btn btn-outline">Our Story</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Menu Items</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Fresh Daily</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">♥</div>
+        <div class="stat-label">Made With Love</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ MARQUEE ═══════════════ -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-accent-blob"></div>
+        <img
+          class="about-img-main"
+          src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=700&q=90&auto=format&fit=crop"
+          alt="Fresh street food preparation"
+        />
+        <div class="about-img-badge">🏆<br/><em>Best Chaat<br/>in Town</em></div>
+      </div>
+      <div class="about-text reveal">
+        <p class="tag" style="background:rgba(255,107,43,.15);color:var(--orange);margin-bottom:16px;">Our Story ✦</p>
+        <h2>Where Every Bite Feels Like <span style="color:var(--yellow)">Coming Home</span></h2>
+        <p>Flavoured Bites was born out of one simple belief — street food should feel like a warm hug from your maa. We took the bold, tangy, spicy magic of Mumbai's chaat culture and wrapped it in love, freshness, and zero compromise.</p>
+        <p>Every masala is ground fresh. Every puri is fried to order. Every chutney is a secret recipe passed down generations. This isn't just food — it's a feeling.</p>
+        <div class="about-perks">
+          <div class="perk-row"><span class="perk-icon">🧼</span><span class="perk-text">Hygiene-first kitchen — certified clean prep always</span></div>
+          <div class="perk-row"><span class="perk-icon">🌿</span><span class="perk-text">Farm-fresh ingredients sourced daily</span></div>
+          <div class="perk-row"><span class="perk-icon">🚫🧪</span><span class="perk-text">Zero artificial flavours — pure, real taste</span></div>
+          <div class="perk-row"><span class="perk-icon">🔥</span><span class="perk-text">Customise your spice level — mild to deadly!</span></div>
+        </div>
+        <a href="#menu" class="btn btn-primary">See Full Menu →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ MENU ═══════════════ -->
+<section id="menu">
+  <div class="container">
+    <p class="section-title reveal">Our <span class="title-accent">Star Dishes</span></p>
+    <p class="section-sub reveal">Handcrafted with fresh ingredients every single day. 
+      <br/>No shortcuts, ever.</p>
+
+    <!-- Today's Ticker -->
+    <div class="today-ticker reveal">
+      <span class="ticker-label">Today's Special</span>
+      <div class="ticker-scroll">
+        <div class="ticker-inner" id="tickerInner"></div>
+      </div>
+    </div>
+
+    <div class="menu-filter reveal">
+      <button class="filter-btn active" data-filter="all">All Items</button>
+      <button class="filter-btn" data-filter="chaat">Chaat</button>
+      <button class="filter-btn" data-filter="puri">Puri Varieties</button>
+      <button class="filter-btn" data-filter="snacks">Snacks</button>
+    </div>
+
+    <div class="menu-grid">
+
+      <!-- PANI PURI – featured -->
+      <div class="menu-card featured reveal" data-cat="puri">
+        <div class="card-img-wrap">
+          <div class="card-badge"><span class="tag tag-popular">⭐ Fan Favourite</span></div>
+          <img
+            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=90&auto=format&fit=crop"
+            alt="Pani Puri"
+          />
+          <div class="card-overlay"></div>
+          <div class="card-price">₹40</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Signature Pani Puri 💧</div>
+          <div class="card-desc">Six crispy hollow puris bursting with our legendary trio of jaljeera water, sweet tamarind, and fiery green chutney. Stuffed with spiced potatoes and sprouted moong. One bite and you'll forget everything else.</div>
+          <div class="card-meta">
+            <div class="card-tags">
+              <span class="card-tag tag-spicy">Spicy</span>
+              <span class="card-tag tag-tangy">Tangy</span>
+              <span class="card-tag tag-fresh">Fresh</span>
+            </div>
+            <div class="card-rating">⭐ 4.9</div>
+          </div>
+          <!-- <button class="card-add-btn">Add to Order 🛒</button> -->
+        </div>
+      </div>
+
+      <!-- BHEL PURI -->
+      <div class="menu-card reveal" data-cat="chaat">
+        <div class="card-img-wrap">
+          <div class="card-badge"><span class="tag tag-fresh">🌿 Light & Fresh</span></div>
+          <img
+            src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&q=90&auto=format&fit=crop"
+            alt="Bhel Puri"
+          />
+          <div class="card-overlay"></div>
+          <div class="card-price">₹35</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Bhel Puri Blast 💥</div>
+          <div class="card-desc">Puffed rice, sev, chopped onions, tomatoes, raw mango, and three chutneys tossed together in a perfect tangy-sweet symphony. Light enough to eat two plates.</div>
+          <div class="card-meta">
+            <div class="card-tags">
+              <span class="card-tag tag-tangy">Tangy</span>
+              <span class="card-tag tag-fresh">Crunchy</span>
+            </div>
+            <div class="card-rating">⭐ 4.8</div>
+          </div>
+          <!-- <button class="card-add-btn">Add to Order 🛒</button> -->
+        </div>
+      </div>
+
+      <!-- SPDASH CHAAT -->
+      <div class="menu-card reveal" data-cat="chaat">
+        <div class="card-img-wrap">
+          <div class="card-badge"><span class="tag tag-spicy">🔥 Bestseller</span></div>
+          <img
+            src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=90&auto=format&fit=crop"
+            alt="Dahi Papdi Chaat"
+          />
+          <div class="card-overlay"></div>
+          <div class="card-price">₹50</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Dahi Papdi Chaat 🥣</div>
+          <div class="card-desc">Crispy papdi loaded with chilled dahi, spiced chickpeas, and a generous drizzle of our secret imli and mint chutneys. Finished with chaat masala and sev. A full flavour explosion in every spoon.</div>
+          <div class="card-meta">
+            <div class="card-tags">
+              <span class="card-tag tag-popular">Popular</span>
+              <span class="card-tag tag-fresh">Creamy</span>
+            </div>
+            <div class="card-rating">⭐ 4.9</div>
+          </div>
+          <!-- <button class="card-add-btn">Add to Order 🛒</button> -->
+        </div>
+      </div>
+
+      <!-- SPDASH SAMOSA CHAAT -->
+      <div class="menu-card reveal" data-cat="chaat">
+        <div class="card-img-wrap">
+          <div class="card-badge"><span class="tag tag-spicy">🌶️ Spicy Pick</span></div>
+          <img
+            src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=600&q=90&auto=format&fit=crop"
+            alt="Samosa Chaat"
+          />
+          <div class="card-overlay"></div>
+          <div class="card-price">₹55</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Samosa Chaat 🫓</div>
+          <div class="card-desc">A crispy golden samosa crushed over spiced chole, drowned in dahi, tamarind chutney, and topped with pomegranate seeds. This is where street food becomes art.</div>
+          <div class="card-meta">
+            <div class="card-tags">
+              <span class="card-tag tag-spicy">Spicy</span>
+              <span class="card-tag tag-tangy">Rich</span>
+            </div>
+            <div class="card-rating">⭐ 4.7</div>
+          </div>
+          <!-- <button class="card-add-btn">Add to Order 🛒</button> -->
+        </div>
+      </div>
+
+      <!-- ALOO TIKKI -->
+      <div class="menu-card reveal" data-cat="snacks">
+        <div class="card-img-wrap">
+          <div class="card-badge"><span class="tag tag-fresh">🥔 Classic</span></div>
+          <img
+            src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=90&auto=format&fit=crop"
+            alt="Aloo Tikki"
+          />
+          <div class="card-overlay"></div>
+          <div class="card-price">₹30</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Aloo Tikki Platter 🥔</div>
+          <div class="card-desc">Crispy-on-the-outside, soft-on-the-inside potato patties seasoned with our signature masala. Served with three house chutneys. The O.G. street snack done right.</div>
+          <div class="card-meta">
+            <div class="card-tags">
+              <span class="card-tag tag-fresh">Crispy</span>
+              <span class="card-tag tag-popular">Classic</span>
+            </div>
+            <div class="card-rating">⭐ 4.8</div>
+          </div>
+          <!-- <button class="card-add-btn">Add to Order 🛒</button> -->
+        </div>
+      </div>
+
+    </div><!-- /menu-grid -->
+  </div>
+</section>
+ 
+
+<!-- ═══════════════ WHY US ═══════════════ -->
+<section id="why">
+  <div class="container">
+    <p class="section-title reveal">Why Foodies <span class="title-accent">Love Us</span></p>
+    <p class="section-sub reveal">We don't just make food. We craft experiences that keep you coming back.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="why-icon">🧼</span>
+        <div class="why-title">Spotlessly Clean</div>
+        <div class="why-text">Our prep station is cleaned before every service. Gloves, covered containers, filtered water — always. No compromise, no shortcuts.</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">🌿</span>
+        <div class="why-title">Farm to Plate</div>
+        <div class="why-text">Vegetables sourced fresh every morning. No frozen, no leftover. If it isn't fresh, it doesn't go on your plate.</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">❤️</span>
+        <div class="why-title">Made With Love</div>
+        <div class="why-text">Recipes perfected over years in our own kitchen. Every chutney, every filling — it's personal. And it shows in every bite.</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">🌶️</span>
+        <div class="why-title">Your Spice, Your Way</div>
+        <div class="why-text">Choose mild, medium, hot, or extra fire 🔥. We never assume — we always ask. Because great food is personal.</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">⚡</span>
+        <div class="why-title">Lightning Fast Service</div>
+        <div class="why-text">Because hungry people shouldn't wait. We prep smart so your order is in your hands within minutes.</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">💰</span>
+        <div class="why-title">Pocket Friendly</div>
+        <div class="why-text">Premium ingredients, humble prices. Great food shouldn't be a luxury — it should be for everyone. Always.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GALLERY ═══════════════ -->
+<section id="gallery">
+  <div class="container">
+    <p class="section-title reveal">Fresh from the <span class="title-accent">Kitchen</span></p>
+    <p class="section-sub reveal">Every photo you see is real. We're proud of what we make.</p>
+    <div class="gallery-grid reveal">
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=90&auto=format&fit=crop" alt="Pani Puri" />
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&q=85&auto=format&fit=crop" alt="Bhel" />
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=85&auto=format&fit=crop" alt="Chaat" />
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400&q=85&auto=format&fit=crop" alt="Samosa Chaat" />
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=500&q=85&auto=format&fit=crop" alt="Aloo Tikki" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+<section id="testimonials">
+  <div class="container">
+    <p class="section-title reveal">What Foodies <span class="title-accent">Are Saying</span></p>
+    <p class="section-sub reveal">Real reviews from real people who couldn't stay away.</p>
+
+    <div class="testi-slider-wrap reveal">
+      <div class="testi-track" id="testiTrack">
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"</div>
+          <div class="testi-text">The Pani Puri is UNREAL. I've had pani puri across Mumbai and Delhi — this hits different. The jaljeera water alone is worth the trip. My family is obsessed.</div>
+          <div class="testi-footer">
+            <div class="testi-avatar">P</div>
+            <div>
+              <div class="testi-name">Priya Mehta</div>
+              <div class="testi-loc">📍 Regular customer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"</div>
+          <div class="testi-text">Har bite mein ghar ka swaad — that tagline is literally true. The dahi chaat took me straight back to my nani's house. The hygiene and freshness is a class above any other street stall.</div>
+          <div class="testi-footer">
+            <div class="testi-avatar">R</div>
+            <div>
+              <div class="testi-name">Rahul Sharma</div>
+              <div class="testi-loc">📍 Food blogger</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"</div>
+          <div class="testi-text">I love that they let me choose my spice level. Extra hot Pani Puri with the loaded filling? Yes please. The aloo tikki is perfectly crispy. Will be back every weekend!</div>
+          <div class="testi-footer">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Ananya Joshi</div>
+              <div class="testi-loc">📍 Spice lover</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"</div>
+          <div class="testi-text">Bhel Puri Blast is aptly named! Every bite is a flavour explosion. Raw mango makes all the difference. Genuinely the best street food I've had in this city.</div>
+          <div class="testi-footer">
+            <div class="testi-avatar">K</div>
+            <div>
+              <div class="testi-name">Karan Patel</div>
+              <div class="testi-loc">📍 Office regular</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"</div>
+          <div class="testi-text">Ordered the Family Feast Pack on Sunday — gone in 10 minutes flat! Four of us couldn't stop. The samosa chaat is next level.</div>
+          <div class="testi-footer">
+            <div class="testi-avatar">S</div>
+            <div>
+              <div class="testi-name">Sneha Iyer</div>
+              <div class="testi-loc">📍 Family foodie</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"</div>
+          <div class="testi-text">Finally — street food I can trust is clean and fresh. The open kitchen, the gloves, the freshly made puris. As a hygiene-conscious person, Flavoured Bites is the only stall I'll eat at.</div>
+          <div class="testi-footer">
+            <div class="testi-avatar">M</div>
+            <div>
+              <div class="testi-name">Meera Nair</div>
+              <div class="testi-loc">📍 Health-conscious foodie</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /testi-track -->
+    </div><!-- /testi-slider-wrap -->
+
+    <!-- Controls -->
+    <div class="testi-controls">
+      <button class="testi-arrow" id="testiPrev">&#8592;</button>
+      <div class="testi-dots" id="testiDots"></div>
+      <button class="testi-arrow" id="testiNext">&#8594;</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section id="cta">
+  <h2>Hungry Yet? 😋</h2>
+  <p>Come find us and taste the difference that love and freshness make.</p>
+  <div class="cta-btns">
+    <a href="#menu" class="btn btn-white">Browse Full Menu 🍽️</a>
+    <a href="#find-us" class="btn btn-outline" style="border-color:#fff;color:#fff;">Find Our Stall 📍</a>
+  </div>
+</section>
+
+<!-- ═══════════════ FIND US ═══════════════ -->
+<section id="find-us">
+  <div class="container">
+    <div class="find-grid">
+      <div class="find-info reveal">
+        <h2>Come Find <span style="color:var(--yellow)">Us</span> 📍</h2>
+        <p>We're right there where the aroma of fresh chaat greets you before you even arrive. Look for the happy crowd — that's us.</p>
+        <div class="info-list">
+          <div class="info-row">
+            <span class="info-icon">📍</span>
+            <div>
+              <div class="info-label">Location</div>
+              <div class="info-val">Your Local Chaat Corner<br/>Near the Hustle, Always Fresh</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">🕐</span>
+            <div>
+              <div class="info-label">Serving Hours</div>
+              <div class="info-val">Mon–Sat: 4:30 PM – 9:30 PM<br/>Sunday: 12:00 PM – 9:30 PM</div>
+            </div>
+          </div>
+          <!-- <div class="info-row">
+            <span class="info-icon">📞</span>
+            <div>
+              <div class="info-label">Call / WhatsApp</div>
+              <div class="info-val">Drop a message to pre-order<br/>or ask for the day's specials!</div>
+            </div>
+          </div> -->
+          <div class="info-row">
+            <span class="info-icon">📸</span>
+            <div>
+              <div class="info-label">Follow Us</div>
+              <div class="info-val">Tag us in your food pics<br/>#FlavouredBites 🌶️</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="map-placeholder">
+          <span class="map-pin">📍</span>
+          <p style="font-family:var(--font-brand);font-size:1.3rem;color:var(--yellow);">Flavoured Bites</p>
+          <p>Drop by our stall — follow the<br/>amazing smell of fresh chaat!</p>
+          <a href="#" class="btn btn-primary" style="margin-top:8px;">Get Directions 🗺️</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="Logo.jpg" alt="Logo" onerror="this.style.display='none'" />
+          <span class="footer-logo-name">Flavoured Bites</span>
+        </div>
+        <p>Street food made with the soul of home cooking. Fresh ingredients, secret recipes, and a whole lot of love — every single day.</p>
+        <div class="footer-socials">
+          <div class="social-btn">📘</div>
+          <div class="social-btn">📸</div>
+          <div class="social-btn">🐦</div>
+          <div class="social-btn">▶️</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Bites</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#why">Why Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Favourites</h4>
+        <ul>
+          <li><a href="#menu">Pani Puri</a></li>
+          <li><a href="#menu">Bhel Puri</a></li>
+          <li><a href="#menu">Dahi Chaat</a></li>
+          <li><a href="#menu">Samosa Chaat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <ul>
+          <li><a href="#">Mon–Sat 4:30–9:30PM</a></li>
+          <li><a href="#">Sunday 12–9:30PM</a></li>
+          <li><a href="#">Always Fresh</a></li>
+          <li><a href="#find-us">Find Our Stall</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span>Flavoured Bites</span>. Made with ❤️ and a pinch of masala.</p>
+      <p>Street food, homely heart — <span>#FlavouredBites</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button id="back-top">↑</button>
+
+<!-- WhatsApp Float -->
+<div id="wa-float" title="Chat on WhatsApp">💬</div>
+<div id="wa-tooltip">Order on WhatsApp 🛒</div>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+$(function () {
+
+  /* ── Preloader ── */
+  var $pre = $('#preloader');
+  setTimeout(function () { $pre.addClass('hide'); }, 1900);
+
+  /* ── Hero text cycling ── */
+  var taglines = [
+    "Healthy Twist to Street Food 🥗",
+    "Har bite mein ghar ka swaad 🏠",
+    "Made with love, served with flavour ❤️",
+    "Street chaat, homely heart 🌆",
+    "Taste that feels like home 🍽️",
+    "Pani Puri Like Never Before 💧"
+  ];
+  var idx = 0;
+  var $tag = $('#hero-tagline');
+
+  function showNextTagline() {
+    $tag.removeClass('show');
+    setTimeout(function () {
+      $tag.text(taglines[idx]);
+      $tag.addClass('show');
+      idx = (idx + 1) % taglines.length;
+    }, 500);
+  }
+
+  showNextTagline();
+  setInterval(showNextTagline, 3200);
+
+  /* ── Marquee build ── */
+  var marqueeItems = [
+    "🌶️ Pani Puri",
+    "💥 Bhel Puri",
+    "🥣 Dahi Chaat",
+    "🫓 Samosa Chaat",
+    "🥔 Aloo Tikki",
+    "✨ 100% Fresh",
+    "❤️ Made with Love",
+    "🔥 Spice Your Way"
+  ];
+  var html = '';
+  // duplicate for seamless loop
+  for (var d = 0; d < 2; d++) {
+    marqueeItems.forEach(function (item) {
+      html += '<span class="marquee-item"><span class="star">✦</span>' + item + '</span>';
+    });
+  }
+  $('#marqueeTrack').html(html);
+
+  /* ── Today's ticker build ── */
+  var tickerItems = [
+    "🌶️ Extra Spicy Pani Puri available today!",
+    "🥭 Special Raw Mango Bhel — limited plates",
+    "🍋 Refreshing Nimbu Shikanji on the side",
+    "🎉 Weekend Family Pack now available",
+    "✨ New: Loaded Samosa Chaat just dropped",
+    "💧 Pani Puri with 3 water flavours today!"
+  ];
+  var tHtml = '';
+  for (var td = 0; td < 2; td++) {
+    tickerItems.forEach(function(t){ tHtml += '<span class="ticker-item">' + t + '</span>'; });
+  }
+  $('#tickerInner').html(tHtml);
+
+  /* ── Sticky nav ── */
+  $(window).on('scroll', function () {
+    var st = $(this).scrollTop();
+    if (st > 60) {
+      $('#navbar').addClass('scrolled');
+      $('#back-top').addClass('visible');
+      $('#wa-float').addClass('visible');
+    } else {
+      $('#navbar').removeClass('scrolled');
+      $('#back-top').removeClass('visible');
+      $('#wa-float').removeClass('visible');
+    }
+  });
+
+  /* ── Back to top ── */
+  $('#back-top').on('click', function () {
+    $('html, body').animate({ scrollTop: 0 }, 500);
+  });
+
+  /* ── Mobile menu ── */
+  $('#hamburger').on('click', function () {
+    $('#mobileMenu').addClass('open');
+    $('body').css('overflow', 'hidden');
+  });
+  $('#mobileClose, .mob-link').on('click', function () {
+    $('#mobileMenu').removeClass('open');
+    $('body').css('overflow', '');
+  });
+
+  /* ── Scroll reveal ── */
+  function checkReveal() {
+    var wBottom = $(window).scrollTop() + $(window).height();
+    $('.reveal').each(function () {
+      var elTop = $(this).offset().top;
+      if (wBottom > elTop + 60) {
+        $(this).addClass('visible');
+      }
+    });
+  }
+  $(window).on('scroll', checkReveal);
+  checkReveal(); // run on load
+
+  /* ── Stagger menu cards ── */
+  $('.menu-card').each(function (i) {
+    $(this).css('transition-delay', (i * 0.1) + 's');
+  });
+
+  /* ── Menu filter ── */
+  $('.filter-btn').on('click', function () {
+    $('.filter-btn').removeClass('active');
+    $(this).addClass('active');
+    var filter = $(this).data('filter');
+    $('.menu-card').each(function () {
+      var cat = $(this).data('cat');
+      if (filter === 'all' || cat === filter) {
+        $(this).fadeIn(300);
+      } else {
+        $(this).fadeOut(200);
+      }
+    });
+  });
+
+  /* ── WhatsApp button ── */
+  $('#wa-float').on('mouseenter', function(){ $('#wa-tooltip').fadeIn(200); })
+                .on('mouseleave', function(){ $('#wa-tooltip').fadeOut(150); })
+                .on('click', function(){ window.open('https://wa.me/?text=Hi!%20I%20want%20to%20order%20from%20Flavoured%20Bites%20%F0%9F%8C%B6%EF%B8%8F', '_blank'); });
+
+  /* ── Order modal ── */
+  var currentQty = 1;
+  var currentSpice = 'Medium 🌶️';
+  var dishEmojis = {
+    'Signature Pani Puri 💧': '💧',
+    'Bhel Puri Blast 💥': '💥',
+    'Dahi Papdi Chaat 🥣': '🥣',
+    'Samosa Chaat 🫓': '🫓',
+    'Aloo Tikki Platter 🥔': '🥔'
+  };
+
+  $('.card-add-btn').on('click', function () {
+    var dishName = $(this).closest('.menu-card').find('.card-name').text();
+    currentQty = 1;
+    currentSpice = 'Medium 🌶️';
+    $('#modal-dish-name').text(dishName);
+    $('#modal-emoji').text(dishEmojis[dishName] || '🍽️');
+    $('#modal-qty-val').text(1);
+    $('.spice-btn').removeClass('picked');
+    $('.spice-btn[data-spice="Medium 🌶️"]').addClass('picked');
+    $('#order-modal').addClass('open');
+    $('body').css('overflow','hidden');
+  });
+
+  $('#modalClose, #modalOverlay').on('click', function(){
+    $('#order-modal').removeClass('open');
+    $('body').css('overflow','');
+  });
+
+  $('#qty-minus').on('click', function(){
+    if (currentQty > 1) { currentQty--; $('#modal-qty-val').text(currentQty); }
+  });
+  $('#qty-plus').on('click', function(){
+    currentQty++;
+    $('#modal-qty-val').text(currentQty);
+  });
+
+  $('.spice-btn').on('click', function(){
+    $('.spice-btn').removeClass('picked');
+    $(this).addClass('picked');
+    currentSpice = $(this).data('spice');
+  });
+
+  $('#modal-confirm').on('click', function(){
+    var dish = $('#modal-dish-name').text();
+    $('#order-modal').removeClass('open');
+    $('body').css('overflow','');
+    launchConfetti();
+    // toast
+    showToast('🎉 ' + currentQty + 'x ' + dish + ' (' + currentSpice + ') added!');
+  });
+
+  /* ── Toast notification ── */
+  function showToast(msg) {
+    var $t = $('<div>').text(msg).css({
+      position:'fixed', bottom:'140px', left:'50%',
+      transform:'translateX(-50%) translateY(20px)',
+      background:'#0a3d5c', color:'#fff',
+      padding:'12px 28px', borderRadius:'50px',
+      fontFamily:"'Poppins',sans-serif", fontWeight:700, fontSize:'.88rem',
+      boxShadow:'0 8px 30px rgba(0,0,0,.4)',
+      border:'1px solid rgba(255,209,48,.25)',
+      zIndex:99998, opacity:0,
+      transition:'all .35s ease'
+    });
+    $('body').append($t);
+    setTimeout(function(){ $t.css({ opacity:1, transform:'translateX(-50%) translateY(0)' }); }, 10);
+    setTimeout(function(){ $t.css({ opacity:0, transform:'translateX(-50%) translateY(20px)' }); }, 3200);
+    setTimeout(function(){ $t.remove(); }, 3700);
+  }
+
+  /* ── Confetti ── */
+  function launchConfetti() {
+    var colors = ['#FFD130','#FF6B2B','#4EC95A','#FF3B5C','#ffffff','#0ea5e9'];
+    for (var i = 0; i < 80; i++) {
+      (function(delay){
+        setTimeout(function(){
+          var $c = $('<div class="confetti-piece">').css({
+            left: Math.random() * 100 + 'vw',
+            top: '-20px',
+            background: colors[Math.floor(Math.random()*colors.length)],
+            width: (6 + Math.random()*8) + 'px',
+            height: (6 + Math.random()*8) + 'px',
+            borderRadius: Math.random() > .5 ? '50%' : '2px',
+            animationDuration: (1.2 + Math.random()*2) + 's',
+            animationDelay: '0s'
+          });
+          $('body').append($c);
+          setTimeout(function(){ $c.remove(); }, 3200);
+        }, delay);
+      })(i * 20);
+    }
+  }
+
+  /* ── Card add-to-order (kept for fallback visual feedback outside modal) ── */
+
+  /* ── Parallax hero floaters on mouse move ── */
+  $(document).on('mousemove', function (e) {
+    var xc = (e.clientX / $(window).width()  - 0.5) * 20;
+    var yc = (e.clientY / $(window).height() - 0.5) * 20;
+    $('.food-float.ff1').css('transform', 'translate('+ (xc * 1.5) +'px,'+ (yc * 1.2) +'px)');
+    $('.food-float.ff2').css('transform', 'translate('+ (xc * -1)  +'px,'+ (yc * 0.8) +'px)');
+    $('.food-float.ff4').css('transform', 'translate('+ (xc * 0.8) +'px,'+ (yc * -1.2)+'px)');
+    $('.emoji-float.ef1').css('transform', 'translate('+ (xc * 0.5) +'px,'+ (yc * 0.4) +'px)');
+    $('.emoji-float.ef2').css('transform', 'translate('+ (xc * -0.6)+'px,'+ (yc * 0.5) +'px)');
+  });
+
+  /* ── Testimonials Slider ── */
+  (function(){
+    var $track   = $('#testiTrack');
+    var $dotsWrap= $('#testiDots');
+    var $cards   = $track.find('.testi-card');
+    var total    = $cards.length;
+    var current  = 0;
+    var perView  = 3;   // desktop default
+    var autoTimer;
+
+    function getPerView(){
+      var w = $(window).width();
+      if(w <= 768)  return 1;
+      if(w <= 1024) return 2;
+      return 3;
+    }
+
+    /* build dots */
+    function buildDots(){
+      $dotsWrap.empty();
+      perView = getPerView();
+      var pages = Math.ceil(total / perView);
+      for(var i = 0; i < pages; i++){
+        $dotsWrap.append('<div class="testi-dot" data-idx="'+i+'"></div>');
+      }
+      updateDots();
+    }
+
+    function updateDots(){
+      var page = Math.floor(current / perView);
+      $dotsWrap.find('.testi-dot').removeClass('active').eq(page).addClass('active');
+    }
+
+    function goTo(idx){
+      perView = getPerView();
+      var max = total - perView;
+      if(idx < 0)   idx = max;
+      if(idx > max) idx = 0;
+      current = idx;
+      /* card width = (trackWidth / perView) but simpler: use % */
+      var cardW  = $track.parent().width() / perView;
+      var offset = -(current * (cardW + 24));   /* 24px = gap */
+      $track.css('transform', 'translateX('+offset+'px)');
+      updateDots();
+    }
+
+    function startAuto(){
+      clearInterval(autoTimer);
+      autoTimer = setInterval(function(){
+        goTo(current + 1);
+      }, 4000);
+    }
+
+    buildDots();
+    goTo(0);
+    startAuto();
+
+    $('#testiNext').on('click', function(){ goTo(current + 1); startAuto(); });
+    $('#testiPrev').on('click', function(){ goTo(current - 1); startAuto(); });
+
+    $dotsWrap.on('click', '.testi-dot', function(){
+      goTo(parseInt($(this).data('idx')) * perView);
+      startAuto();
+    });
+
+    /* touch/swipe support */
+    var touchStartX = 0;
+    $track[0].addEventListener('touchstart', function(e){
+      touchStartX = e.changedTouches[0].clientX;
+    }, {passive:true});
+    $track[0].addEventListener('touchend', function(e){
+      var diff = touchStartX - e.changedTouches[0].clientX;
+      if(Math.abs(diff) > 40){
+        goTo(diff > 0 ? current+1 : current-1);
+        startAuto();
+      }
+    }, {passive:true});
+
+    /* pause on hover */
+    $track.on('mouseenter', function(){ clearInterval(autoTimer); })
+          .on('mouseleave', startAuto);
+
+    $(window).on('resize', function(){
+      buildDots();
+      goTo(0);
+    });
+  })();
+
+  /* ── 3D card tilt on hover ── */
+  $('.menu-card').on('mousemove', function (e) {
+    var $card = $(this);
+    var off   = $card.offset();
+    var x     = e.pageX - off.left;
+    var y     = e.pageY - off.top;
+    var cx    = $card.width()  / 2;
+    var cy    = $card.height() / 2;
+    var rx    = (y - cy) / cy * 8;
+    var ry    = (cx - x) / cx * 8;
+    $card.css('transform',
+      'perspective(1000px) rotateX('+ rx +'deg) rotateY('+ ry +'deg) translateY(-14px) scale(1.02)'
+    );
+  }).on('mouseleave', function () {
+    $(this).css('transform', '');
+  });
+
+});
+</script>
+</body>
+</html>
