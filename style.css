@@ -348,10 +348,10 @@ a  { text-decoration: none; color: inherit; }
   object-fit: cover;
   border-radius: 50%;
 }
-.ff1 { width: 160px; height: 160px; top: 14%; right: 8%;  animation: float3d 6s ease-in-out infinite; }
-.ff2 { width: 110px; height: 110px; bottom: 22%; right: 18%; animation: float3d 7s ease-in-out infinite 1s; }
-.ff3 { width: 90px;  height: 90px;  top: 60%; left: 4%;  animation: floatSlow 8s ease-in-out infinite 2s; }
-.ff4 { width: 130px; height: 130px; top: 20%; left: 3%;  animation: floatReverse 7s ease-in-out infinite .5s; }
+.ff1 { width: 160px; height: 160px; top: 14%; right: 15%;  animation: float3d 6s ease-in-out infinite; }
+.ff2 { width: 110px; height: 110px; bottom: 22%; right: 10%; animation: float3d 7s ease-in-out infinite 1s; }
+.ff3 { width: 110px;  height: 130px;  top: 60%; left: 10%;  animation: floatSlow 8s ease-in-out infinite 2s; }
+.ff4 { width: 130px; height: 130px; top: 20%; left: 15%;  animation: floatReverse 7s ease-in-out infinite .5s; }
 .ff5 { width: 75px;  height: 75px;  bottom: 15%; left: 22%; animation: float3d 5s ease-in-out infinite 1.5s; }
 
 /* hero emoji floaters */
